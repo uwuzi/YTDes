@@ -104,7 +104,7 @@
          </layout>
         </item>
         <item>
-         <widget class="QListWidget" name="subscriptionList"/>
+         <widget class="QListWidget" name="channelList"/>
         </item>
        </layout>
       </item>
