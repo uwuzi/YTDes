@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     confFileName = "/home/tekipaki/.config/ytdconf";
     readConfFile();
     //ui->channelList->setMaximumWidth(100);
+    ui->channelList->setAlternatingRowColors(1);
     toggleSubscriptionView();
 }
 
@@ -179,10 +180,37 @@ void MainWindow::on_removeButton_clicked()
     qDebug() << savedChannelVec.at(n)->nickname;
     qDebug() << savedChannelVec.at(n)->url.toString();
 #endif
-    removeFromConfFile(savedChannelVec.at(n));
-    ui->channelList->takeItem(n);
-    savedChannelVec.erase(savedChannelVec.begin()+n);
+    if (n > -1) {
+        removeFromConfFile(savedChannelVec.at(n));
+        ui->channelList->takeItem(n);
+        savedChannelVec.erase(savedChannelVec.begin()+n);
+    }
 }
+
+void MainWindow::on_homeButton_clicked()
+{
+    webView->load(QUrl(defaultSite));
+}
+
+void MainWindow::on_settingsButton_clicked()
+{
+    QWidget *wdg = new QWidget;
+    QListWidget *listWidget = new QListWidget;
+    QPushButton *pb = new QPushButton;
+    listWidget->setParent(wdg);
+    pb->setParent(wdg);
+    /*
+    listWidget->layout()->activate();
+    wdg->layout()->addWidget(listWidget);
+    */
+    wdg->show();
+    //hide();
+}
+
+
+
+
+
 
 
 

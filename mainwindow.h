@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QTextStream>
+#include <QDialog>
 #include <vector>
 #include <iostream>
 #include "channel.h"
@@ -33,6 +34,8 @@ private slots:
     void on_channelList_itemEntered(QListWidgetItem *item);
     void on_channelList_itemDoubleClicked(QListWidgetItem *item);
     void on_removeButton_clicked();
+    void on_homeButton_clicked();
+    void on_settingsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

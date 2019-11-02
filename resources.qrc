@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/images">
         <file>assets/burger-icon.png</file>
+        <file>assets/home-icon.png</file>
+        <file>assets/settings-icon.png</file>
     </qresource>
 </RCC>
