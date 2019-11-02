@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     webView->load(QUrl(defaultSite));
     confFileName = "/home/tekipaki/.config/ytdconf";
     readConfFile();
+    //ui->channelList->setMaximumWidth(100);
     toggleSubscriptionView();
 }
 
@@ -46,6 +47,8 @@ void MainWindow::readConfFile()
     for (unsigned int i = 0; i < savedChannelVec.size(); i++) {
         ui->channelList->addItem(savedChannelVec.at(i)->nickname);
     }
+    //ui->channelList->setSortingEnabled(1);
+    //ui->channelList->sortItems(Qt::SortOrder::AscendingOrder);
     file.close();
 }
 
