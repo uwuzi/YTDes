@@ -38,26 +38,46 @@ void MainWindow::readConfFile()
            continue;
         }
         Channel *channel = new Channel;
-        channel->nickname = line;
+        channel->nickname = line.remove(QRegExp("\\n"));
         line = file.readLine();
-        channel->url.setUrl(line);
+        channel->url.setUrl(line.remove(QRegExp("\\n")));
         savedChannelVec.push_back(channel);
     }
     for (unsigned int i = 0; i < savedChannelVec.size(); i++) {
         ui->channelList->addItem(savedChannelVec.at(i)->nickname);
     }
+    file.close();
 }
 
 void MainWindow::writeToConfFile(Channel& c)
 {
     QFile file(confFileName);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //out << "FUCK!!!" << endl;
-        return;
+    if (!file.open(QIODevice::Append | QIODevice::Text)){
+            return;
     }
-    QString name = c.nickname;
-    QString url = c.url.url();
-    //file.write(c.nickname);
+    file.write(c.nickname.toUtf8());
+    file.write("\n");
+    file.write(c.url.url().toUtf8());
+    file.write("\n");
+    file.close();
+}
+
+void MainWindow::removeFromConfFile(Channel* c)
+{
+    QFile f(confFileName);
+    if(f.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        QString s;
+        QTextStream t(&f);
+        while(!t.atEnd()) {
+            QString line = t.readLine();
+            if(!line.contains(c->nickname) && !line.contains(c->url.toString())) {
+                s.append(line + "\n");
+            }
+        }
+    f.resize(0);
+    t << s;
+    f.close();
+    }
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -73,11 +93,13 @@ void MainWindow::toggleSubscriptionView()
         ui->channelList->show();
         ui->addChannelButton->show();
         ui->addChannelInput->show();
+        ui->removeButton->show();
     }
     else {
         ui->channelList->hide();
         ui->addChannelButton->hide();
         ui->addChannelInput->hide();
+        ui->removeButton->hide();
     }
 #endif
 }
@@ -110,10 +132,9 @@ bool MainWindow::saveChannel(const QString& name)
     savedChannelVec.push_back(newChannel);
     ui->channelList->addItem(newChannel->nickname);
     ui->addChannelInput->clear();
+    writeToConfFile(*newChannel);
     return 1;
 }
-
-//bool MainWindow::removeChannel(const)
 
 void MainWindow::on_subscriptionsButton_clicked()
 {
@@ -130,7 +151,7 @@ void MainWindow::on_addChannelInput_returnPressed()
     saveChannel(ui->addChannelInput->text());
 }
 
-void MainWindow::loadFromChannelList(int index)
+void MainWindow::loadFromChannelList(unsigned int index)
 {
     webView->load(savedChannelVec.at(index)->url);
     toggleSubscriptionView();
@@ -138,13 +159,34 @@ void MainWindow::loadFromChannelList(int index)
 
 void MainWindow::on_channelList_itemEntered(QListWidgetItem *item)
 {
-    loadFromChannelList(ui->channelList->currentRow());
+    loadFromChannelList(static_cast<unsigned int> (ui->channelList->currentRow()));
 }
 
 void MainWindow::on_channelList_itemDoubleClicked(QListWidgetItem *item)
 {
-    loadFromChannelList(ui->channelList->currentRow());
+    loadFromChannelList(static_cast<unsigned int> (ui->channelList->currentRow()));
 }
+
+void MainWindow::on_removeButton_clicked()
+{
+    int n = ui->channelList->currentRow();
+#if 0
+    qDebug() << "Deleting:";
+    qDebug() << n;
+    qDebug() << savedChannelVec.at(n)->nickname;
+    qDebug() << savedChannelVec.at(n)->url.toString();
+#endif
+    removeFromConfFile(savedChannelVec.at(n));
+    ui->channelList->takeItem(n);
+    savedChannelVec.erase(savedChannelVec.begin()+n);
+}
+
+
+
+
+
+
+
 
 
 

@@ -32,6 +32,7 @@ private slots:
     void on_addChannelInput_returnPressed();
     void on_channelList_itemEntered(QListWidgetItem *item);
     void on_channelList_itemDoubleClicked(QListWidgetItem *item);
+    void on_removeButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -42,10 +43,12 @@ private:
 
     void readConfFile();
     void writeToConfFile(Channel& c);
+    void removeFromConfFile(Channel* c);
+    void removeFromChannelList(int n);
     void toggleSubscriptionView();
     bool saveChannel(const QString& name);
     bool checkStringBlank(const QString& name);
-    void loadFromChannelList(int index);
+    void loadFromChannelList(unsigned int index);
 };
 
 #endif // MAINWINDOW_H
