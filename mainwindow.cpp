@@ -8,6 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     defaultSite("https://www.youtube.com")
 {
     ui->setupUi(this);
+    this->setWindowTitle("YTDes");
+    QIcon qIcon;
+    qIcon.addFile("/home/tekipaki/Programming/qt-projects/ytd/assets/burger-icon.png");
+    this->setWindowIcon(qIcon);
     webView = new QWebEngineView(ui->webviewFrame);
     webView->load(QUrl(defaultSite));
     confFileName = "/home/tekipaki/.config/ytdconf";
@@ -207,11 +211,15 @@ void MainWindow::on_settingsButton_clicked()
     //hide();
 }
 
+void MainWindow::on_backButton_clicked()
+{
+    webView->back();
+}
 
-
-
-
-
+void MainWindow::on_forwardButton_clicked()
+{
+    webView->forward();
+}
 
 
 

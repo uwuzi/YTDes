@@ -80,6 +80,17 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="settingsButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/images/assets/settings-icon.png</normaloff>:/images/assets/settings-icon.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="homeButton">
         <property name="text">
          <string/>
@@ -91,13 +102,30 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="settingsButton">
+       <widget class="QPushButton" name="backButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string/>
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
-          <normaloff>:/images/assets/settings-icon.png</normaloff>:/images/assets/settings-icon.png</iconset>
+          <normaloff>:/images/assets/back-icon.png</normaloff>:/images/assets/back-icon.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="forwardButton">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/images/assets/forward-icon.png</normaloff>:/images/assets/forward-icon.png</iconset>
         </property>
        </widget>
       </item>

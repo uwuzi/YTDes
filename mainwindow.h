@@ -36,6 +36,8 @@ private slots:
     void on_removeButton_clicked();
     void on_homeButton_clicked();
     void on_settingsButton_clicked();
+    void on_backButton_clicked();
+    void on_forwardButton_clicked();
 
 private:
     Ui::MainWindow *ui;
