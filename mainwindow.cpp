@@ -5,7 +5,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    defaultSite("https://www.youtube.com")
+    //defaultSite("https://www.youtube.com");
+    defaultSite("https://invidio.us")
 {
     ui->setupUi(this);
     this->setWindowTitle("YTDes");
@@ -178,12 +179,6 @@ void MainWindow::on_channelList_itemDoubleClicked(QListWidgetItem *item)
 void MainWindow::on_removeButton_clicked()
 {
     int n = ui->channelList->currentRow();
-#if 0
-    qDebug() << "Deleting:";
-    qDebug() << n;
-    qDebug() << savedChannelVec.at(n)->nickname;
-    qDebug() << savedChannelVec.at(n)->url.toString();
-#endif
     if (n > -1) {
         removeFromConfFile(savedChannelVec.at(n));
         ui->channelList->takeItem(n);
@@ -194,10 +189,12 @@ void MainWindow::on_removeButton_clicked()
 void MainWindow::on_homeButton_clicked()
 {
     webView->load(QUrl(defaultSite));
+    //webView->load(QUrl("https://invidio.us"));
 }
 
 void MainWindow::on_settingsButton_clicked()
 {
+#if 0
     QWidget *wdg = new QWidget;
     QListWidget *listWidget = new QListWidget;
     QPushButton *pb = new QPushButton;
@@ -209,6 +206,7 @@ void MainWindow::on_settingsButton_clicked()
     */
     wdg->show();
     //hide();
+#endif
 }
 
 void MainWindow::on_backButton_clicked()
@@ -220,6 +218,37 @@ void MainWindow::on_forwardButton_clicked()
 {
     webView->forward();
 }
+
+void MainWindow::on_downloadButton_clicked()
+{
+    pid_t pid = fork();
+    if (pid == 0) {
+        QString cmd = "youtube-dl -o '~/%(title)s.%(ext)s' ";
+        cmd.append(webView->url().toString());
+        system(cmd.toStdString().c_str());
+    }
+    //qDebug() <<  currentUrl << endl;
+    //qDebug() <<  cmd << endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

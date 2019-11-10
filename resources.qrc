@@ -5,5 +5,6 @@
         <file>assets/settings-icon.png</file>
         <file>assets/back-icon.png</file>
         <file>assets/forward-icon.png</file>
+        <file>assets/download-icon.png</file>
     </qresource>
 </RCC>

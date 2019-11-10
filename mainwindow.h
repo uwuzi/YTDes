@@ -12,6 +12,9 @@
 #include <QDialog>
 #include <vector>
 #include <iostream>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "channel.h"
 
 namespace Ui {
@@ -38,6 +41,8 @@ private slots:
     void on_settingsButton_clicked();
     void on_backButton_clicked();
     void on_forwardButton_clicked();
+
+    void on_downloadButton_clicked();
 
 private:
     Ui::MainWindow *ui;
