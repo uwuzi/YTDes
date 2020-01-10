@@ -11,7 +11,7 @@ Desktop Youtube browser made with QtWebEngine. Store subscriptions/channels loca
     
 ## Subscriptions  
 Program will read "subscriptions" from a file at /home/*username*/.config/ytdes/ytdconf  
-The layout of the file is just:  
+The layout of the file is just (empty lines between entries are okay):  
 
     "Channel Nickname 1"  
     <URL-to-channel-1>  
