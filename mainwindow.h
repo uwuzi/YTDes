@@ -50,7 +50,9 @@ private:
     std::vector<Channel*> savedChannelVec;
     QString confFileName;
     const char* defaultSite;
+    const unsigned int MAX_USERNAME_LENGTH = 32;
 
+    QString getUsername();
     void readConfFile();
     void writeToConfFile(Channel& c);
     void removeFromConfFile(Channel* c);

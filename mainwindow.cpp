@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
+#include <unistd.h>
+#include <climits>
 #include <iostream>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowIcon(qIcon);
     webView = new QWebEngineView(ui->webviewFrame);
     webView->load(QUrl(defaultSite));
-    confFileName = "/home/tekipaki/.config/ytdconf";
+    confFileName = "/home/" + getUsername() + "/.config/ytdes/ytdconf";
     readConfFile();
     //ui->channelList->setMaximumWidth(100);
     ui->channelList->setAlternatingRowColors(1);
@@ -28,6 +32,14 @@ MainWindow::~MainWindow()
         free(savedChannelVec.at(i));
     }
     delete ui;
+}
+
+QString MainWindow::getUsername()
+{
+    char usernameBuff[MAX_USERNAME_LENGTH];
+    getlogin_r(usernameBuff, MAX_USERNAME_LENGTH);
+    QString username = usernameBuff;
+    return username;
 }
 
 void MainWindow::readConfFile()
