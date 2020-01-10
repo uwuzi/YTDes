@@ -21,3 +21,5 @@ The layout of the file is just:
     "Channel Nickname 3"  
     <URL-to-channel-3>  
     
+## More
+The literal hamburger icon shows/hides the subscription panel. There is also a little icon at YTdes/assets/ytdes.png that you can use to make a desktop launcher. Really showing off my artistic skills there.
