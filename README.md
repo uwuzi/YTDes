@@ -1,5 +1,5 @@
 # YTDes
-Desktop Youtube browser made with QtWebEngine. Store subscriptions/channels locally without an account. 
+Desktop Youtube browser made with QtWebEngine. Store subscriptions/channels locally without an account. Browse without ads or tracking via invidio.us.  
 
 ## Install
 
@@ -24,4 +24,7 @@ The layout of the file is as follows (empty lines between entries are okay):
 You can add subscriptions within the program or just edit the text file if you have a bunch.  
     
 ## More
-The literal hamburger icon shows/hides the subscription panel. There is also a little icon at YTdes/assets/ytdes.png that you can use to make a desktop launcher. Really showing off my artistic skills there.
+The literal hamburger icon shows/hides the subscription panel. There is also a little icon at YTdes/assets/ytdes.png that you can use to make a desktop launcher. Really showing off my artistic skills there.  
+
+
+![Screenshot](screenshot/ytdes.jpg)
