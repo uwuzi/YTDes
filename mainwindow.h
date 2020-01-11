@@ -38,11 +38,12 @@ private slots:
     void on_channelList_itemDoubleClicked(QListWidgetItem *item);
     void on_removeButton_clicked();
     void on_homeButton_clicked();
-    void on_settingsButton_clicked();
     void on_backButton_clicked();
     void on_forwardButton_clicked();
-
+    /*
+    void on_settingsButton_clicked();
     void on_downloadButton_clicked();
+    */
 
 private:
     Ui::MainWindow *ui;

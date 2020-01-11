@@ -201,9 +201,9 @@ void MainWindow::on_removeButton_clicked()
 void MainWindow::on_homeButton_clicked()
 {
     webView->load(QUrl(defaultSite));
-    //webView->load(QUrl("https://invidio.us"));
 }
 
+/*
 void MainWindow::on_settingsButton_clicked()
 {
 #if 0
@@ -212,14 +212,13 @@ void MainWindow::on_settingsButton_clicked()
     QPushButton *pb = new QPushButton;
     listWidget->setParent(wdg);
     pb->setParent(wdg);
-    /*
     listWidget->layout()->activate();
     wdg->layout()->addWidget(listWidget);
-    */
     wdg->show();
     //hide();
 #endif
 }
+*/
 
 void MainWindow::on_backButton_clicked()
 {
@@ -231,6 +230,7 @@ void MainWindow::on_forwardButton_clicked()
     webView->forward();
 }
 
+/*
 void MainWindow::on_downloadButton_clicked()
 {
     pid_t pid = fork();
@@ -242,25 +242,7 @@ void MainWindow::on_downloadButton_clicked()
     //qDebug() <<  currentUrl << endl;
     //qDebug() <<  cmd << endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
