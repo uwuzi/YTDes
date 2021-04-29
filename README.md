@@ -3,7 +3,7 @@ Desktop Youtube browser made with QtWebEngine. Store subscriptions/channels loca
 
 ## Install
 
-    git clone https://github.com/uwuzi/YTDes/  
+    git clone https://github.com/misusi/YTDes/  
     cd YTDes  
     mkdir build && cd build  
     qmake -makefile ../ytd.pro  
